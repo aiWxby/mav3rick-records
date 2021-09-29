@@ -1,0 +1,426 @@
+/* --------------------------------- Navbar --------------------------------- */
+.navbar {
+    @extend %flexCenter;
+    flex-wrap: wrap;
+    flex: 85;
+    padding: 5px;
+    background-color: $component-bg;
+    justify-content: space-around;
+
+    .logo__section {
+        @extend %flexCenter;
+        justify-content: flex-start;
+        flex: 10;
+    }
+
+    .route__section {
+        flex: 90;
+    }
+
+    .navbar__list {
+        @extend %flexCenter;
+        &__item {
+            @extend %menuItem;
+            @extend %transition;
+            &:hover {
+                @extend %transition;
+                background-color: map-get($map: $main-color-map, $key: default);
+            }
+        }
+    }
+
+    #nav-logo {
+        height: 35px;
+        margin-right: 10px;
+        width: 35px;
+        border-radius: map-get($map: $radius-map, $key: small-comp);
+    }
+}
+
+.miscbar {
+    @extend %flexCenter;
+    flex: 15;
+    flex-wrap: wrap;
+
+    .profile__section {
+        @extend %flexCenter;
+        @include profile-component;
+    }
+
+    .tool__section {
+        margin: auto;
+        color: map-get($map: $main-color-map, $key: default);
+    }
+}
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------- Homepage Content Area ------------------------- */
+.content {
+    .grid {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-areas:
+            "grid__slider grid__slider grid__slider grid__slider grid__slider grid__slider grid__tdp"
+            "grid__artists grid__artists grid__demos grid__demos grid__releases grid__releases grid__tdpa";
+        &__slider {
+            grid-area: grid__slider;
+            background-color: $component-bg;
+            border-radius: map-get($map: $radius-map, $key: small-comp);
+            position: relative;
+            min-height: 150px;
+            max-height: 280px;
+            .slider {
+                &__image {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+                &__content {
+                    bottom: 20px;
+                    left: 20px;
+                    position: absolute;
+                    font-size: 1rem;
+                    text-shadow: 0px 1px 4px black;
+                }
+            }
+        }
+        &__tdp {
+            grid-area: grid__tdp;
+            @extend %gridItem;
+            text-align: center;
+            .tdp__list {
+                &__item {
+                    @extend %flexCenter;
+                    text-align: left;
+                    justify-content: left;
+                    padding-top: 8px;
+                }
+            }
+        }
+        &__artists {
+            grid-area: grid__artists;
+            @extend %gridItem;
+            @extend %flexCenter;
+            .artists__icon {
+                flex: 10;
+                text-align: center;
+                color: map-get($map: $info-color-map, $key: artists);
+            }
+            .artists__info {
+                flex: 90;
+                padding-left: 10px;
+                &__count {
+                    font-size: 1.5rem;
+                }
+                &__type {
+                    color: map-get($map: $info-color-map, $key: artists);
+                }
+            }
+        }
+        &__demos {
+            grid-area: grid__demos;
+            @extend %gridItem;
+            @extend %flexCenter;
+            .demos__icon {
+                flex: 10;
+                text-align: center;
+                color: map-get($map: $info-color-map, $key: demos);
+            }
+            .demos__info {
+                flex: 90;
+                padding-left: 10px;
+                &__count {
+                    font-size: 1.5rem;
+                }
+                &__type {
+                    color: map-get($map: $info-color-map, $key: demos);
+                }
+            }
+        }
+        &__releases {
+            grid-area: grid__releases;
+            @extend %gridItem;
+            @extend %flexCenter;
+            .releases__icon {
+                flex: 10;
+                text-align: center;
+                color: map-get($map: $info-color-map, $key: releases);
+            }
+            .releases__info {
+                flex: 90;
+                padding-left: 10px;
+                &__count {
+                    font-size: 1.5rem;
+                }
+                &__type {
+                    color: map-get($map: $info-color-map, $key: releases);
+                }
+            }
+        }
+        &__tdpa {
+            grid-area: grid__tdpa;
+            @extend %gridItem;
+            @extend %flexCenter;
+        }
+    }
+}
+/* -------------------------------------------------------------------------- */
+
+/* --------------------------------- Footer --------------------------------- */
+.footer {
+    background-color: $component-bg;
+    padding: 5px;
+    .footer__list {
+        @extend %flexCenter;
+        flex-wrap: wrap;
+        &__item {
+            @extend %menuItem;
+            @extend %transition;
+            position: relative;
+            .fa-star {
+                position: absolute;
+                left: 0;
+                top: 0;
+                transform: translate(-7px, -4px);
+            }
+            &:hover {
+                @extend %transition;
+                background-color: map-get($map: $main-color-map, $key: default);
+            }
+        }
+    }
+}
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                            All Other Components                            */
+/* -------------------------------------------------------------------------- */
+/* ----------------------------- Profile Preview ---------------------------- */
+@include profile-component;
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------- Demo Cards ------------------------------- */
+// TODO: BURAYA MUTLAKA GERİ DÖN, CARDLAR TAM OLARAK SIĞMIYOR
+.demo-card {
+    background-color: $main-bg;
+    width: calc((100% / 3) - 10px);
+    padding: 10px;
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    &__type {
+        text-align: center;
+        padding: 2px 10px;
+        width: 50%;
+        border-radius: 999px;
+    }
+    &__img {
+        margin: 10px 0px;
+        width: 80%;
+        object-fit: cover;
+        height: 200px;
+    }
+    &__button {
+        background-color: $component-bg;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
+        padding: 5px 0px;
+        font-size: map-get($map: $fontsize-map, $key: bigger);
+        @extend %transition;
+        &:hover {
+            @extend %transition;
+            background-color: map-get($map: $main-color-map, $key: default);
+        }
+    }
+    &__name {
+        font-weight: normal;
+        font-size: 1.3rem;
+    }
+}
+/* -------------------------------------------------------------------------- */
+
+/* ------------------------------ Form Modules ------------------------------ */
+.module {
+    width: calc(100% / 3);
+    position: relative;
+    margin-top: 10px;
+    @extend %flexColumn;
+    &__title {
+        @extend %formTitle;
+    }
+    &__values {
+        flex: 20;
+        margin-right: 10px;
+        .value__title {
+            @extend %formTitle;
+        }
+        .value__cards {
+            width: 100%;
+        }
+        .value__card {
+            padding: 10px;
+            margin: 10px 5px 5px 5px;
+            font-size: 1rem;
+            i {
+                padding-right: 5px;
+            }
+            &:first-child {
+                margin-top: 25px;
+            }
+        }
+    }
+    &__submit {
+        flex: 60;
+        @extend %flexColumn;
+        .submit__form {
+            width: 100%;
+            height: 100%;
+            padding: 10px 5px 5px 5px;
+            @extend %flexColumn;
+            .submit__input {
+                width: 50%;
+                padding: 10px;
+                &:not(:first-child) {
+                    margin-top: 10px;
+                }
+                &:focus {
+                    outline: 1px solid
+                        map-get($map: $main-color-map, $key: default);
+                }
+            }
+            .submit__select {
+                width: 50%;
+                padding: 10px;
+                margin-top: 10px;
+                &:focus {
+                    outline: 1px solid
+                        map-get($map: $main-color-map, $key: default);
+                }
+            }
+            #demo__upload {
+                display: none;
+            }
+            #demo__cover__upload {
+                display: none;
+            }
+            .demo {
+                &__upload {
+                    @extend %basicButton;
+                }
+                &__cover__upload {
+                    @extend %basicButton;
+                }
+            }
+        }
+        .user__type {
+            &__section {
+                width: 50%;
+                margin-top: 20px;
+            }
+            &__button {
+                @extend %basicButton;
+                @extend %transition;
+                &:nth-child(2) {
+                    margin-right: 10px;
+                }
+                &:hover {
+                    background-color: map-get(
+                        $map: $main-color-map,
+                        $key: default
+                    );
+                    @extend %transition;
+                }
+            }
+        }
+    }
+    &__preview {
+        flex: 20;
+        padding: 10px;
+        margin-left: 10px;
+        position: relative;
+        .status-check {
+            padding: 10px 5px;
+            position: absolute;
+            top: 0;
+            left: 6px;
+            border-radius: 0px 0px 5px 5px;
+            color: $main-bg;
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 7px;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-top: 5px solid $main-bg;
+                clear: both;
+            }
+        }
+    }
+    &__rules {
+        flex: 20;
+        margin-left: 10px;
+        .rules__section {
+            padding: 10px;
+            #user__rules {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+/* -------------------------------------------------------------------------- */
+
+/* ----------------------------- Profile Module ----------------------------- */
+.profile {
+    @extend %flexLeft;
+    padding: 10px;
+    max-height: 250px;
+    &__layout {
+        margin-top: 20px;
+        padding: 25px 10px 10px 10px;
+    }
+    &__image {
+        flex: 15;
+        @extend %flexColumn;
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 200px;
+            margin-bottom: 5px;
+        }
+    }
+    &__detail {
+        flex: 85;
+        padding-left: 10px;
+        .detail {
+            margin-bottom: 5px;
+            margin-right: 10px;
+            padding: 8px;
+            background-color: $component-bg;
+            &__list {
+                display: flex;
+                height: 100%;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+            &__artistname {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+.user-details-title {
+    margin-left: 10px;
+}
+/* -------------------------------------------------------------------------- */
+/* ------------------------------ Simple Button ----------------------------- */
+.btn {
+    @extend %basicButton;
+}
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */

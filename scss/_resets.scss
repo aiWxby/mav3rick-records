@@ -1,0 +1,26 @@
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select {
+    all: unset;
+}
+
+//*Bütün h etiketlerini sıfırlamak için
+/*
+$counter: 0;
+@while $counter <= 5 {
+    h#{$counter} {
+        font-weight: normal;
+        font-size: 1.1rem;
+    }
+    $counter: $counter + 1;
+}
+*/

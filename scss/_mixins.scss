@@ -1,0 +1,18 @@
+@mixin profile-component($color:map-get($map: $main-color-map, $key: default))
+{
+    .user {
+        &__name {
+            color: $color;
+            //font-size: 1.2rem;
+        }
+        &__pp {
+            @extend %flexCenter;
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            margin-right: 8px;
+            border-radius: 999px;
+            outline: 1px solid map-get($map: $main-color-map, $key: default);
+        }
+    }
+}
