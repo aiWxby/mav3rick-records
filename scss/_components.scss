@@ -19,6 +19,8 @@
 
     .navbar__list {
         @extend %flexCenter;
+        flex-wrap: wrap;
+
         &__item {
             @extend %menuItem;
             @extend %transition;
@@ -89,6 +91,8 @@
             grid-area: grid__tdp;
             @extend %gridItem;
             text-align: center;
+            max-height: 280px;
+            overflow-y: scroll;
             .tdp__list {
                 &__item {
                     @extend %flexCenter;
@@ -201,7 +205,6 @@
 /* -------------------------------------------------------------------------- */
 
 /* ------------------------------- Demo Cards ------------------------------- */
-// TODO: BURAYA MUTLAKA GERİ DÖN, CARDLAR TAM OLARAK SIĞMIYOR
 .demo-card {
     background-color: $main-bg;
     width: calc((100% / 3) - 10px);
@@ -348,6 +351,7 @@
             top: 0;
             left: 6px;
             border-radius: 0px 0px 5px 5px;
+            background-color: $negative;
             color: $main-bg;
             &::after {
                 content: "";
